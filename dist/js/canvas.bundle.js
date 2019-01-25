@@ -129,7 +129,7 @@ addEventListener('resize', function () {
 });
 
 // Objects
-function Object(x, y, radius, color) {
+function Particle(x, y, radius, color) {
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -149,13 +149,14 @@ Object.prototype.update = function () {
 };
 
 // Implementation
-var objects = void 0;
+var particles = void 0;
 function init() {
-    objects = [];
+    particles = [];
 
     for (var i = 0; i < 400; i++) {
-        // objects.push();
+        particles.push(new Particle(canvas.width / 2, canvas.height / 2, 5, 'blue'));
     }
+    console.log(particles);
 }
 
 // Animation Loop
@@ -163,7 +164,6 @@ function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
 
-    c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y);
     // objects.forEach(object => {
     //  object.update();
     // });

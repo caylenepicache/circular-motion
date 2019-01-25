@@ -27,7 +27,7 @@ addEventListener('resize', () => {
 })
 
 // Objects
-function Object(x, y, radius, color) {
+function Particle(x, y, radius, color) {
     this.x = x
     this.y = y
     this.radius = radius
@@ -47,13 +47,14 @@ Object.prototype.update = function() {
 }
 
 // Implementation
-let objects
+let particles;
 function init() {
-    objects = []
+    particles = []
 
     for (let i = 0; i < 400; i++) {
-        // objects.push();
+         particles.push(new Particle(canvas.width / 2, canvas.height / 2, 5, 'blue'));
     }
+    console.log(particles)
 }
 
 // Animation Loop
