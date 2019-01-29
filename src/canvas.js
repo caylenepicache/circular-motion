@@ -32,9 +32,22 @@ function Particle(x, y, radius, color) {
     this.y = y
     this.radius = radius
     this.color = color
+    this.radians = 0;
+    this.velocity = 0.05;
+
+    this.update = () => {
+        //MOve these points over time
+        this.radians += this.velocity;
+        this.x += x +  Math.cos(this.radians) * 100;
+        this.y += y +  Math.sin(this.radians) * 100;
+        //oscillates the points from -100 to 100
+        //console.log(Math.cos(this.radians) * 100);
+        this.draw();
+    }
+    
 }
 
-Object.prototype.draw = function() {
+this.draw = () => {
     c.beginPath()
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
     c.fillStyle = this.color

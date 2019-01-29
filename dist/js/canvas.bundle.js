@@ -130,16 +130,30 @@ addEventListener('resize', function () {
 
 // Objects
 function Particle(x, y, radius, color) {
+    var _this = this;
+
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.color = color;
+    this.radians = 0;
+    this.velocity = 0.05;
+
+    this.update = function () {
+        //MOve these points over time
+        _this.radians += _this.velocity;
+        _this.x += x + Math.cos(_this.radians) * 100;
+        _this.y += y + Math.sin(_this.radians) * 100;
+        //oscillates the points from -100 to 100
+        //console.log(Math.cos(this.radians) * 100);
+        _this.draw();
+    };
 }
 
-Object.prototype.draw = function () {
+undefined.draw = function () {
     c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = this.color;
+    c.arc(undefined.x, undefined.y, undefined.radius, 0, Math.PI * 2, false);
+    c.fillStyle = undefined.color;
     c.fill();
     c.closePath();
 };
@@ -164,9 +178,9 @@ function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
 
-    // objects.forEach(object => {
-    //  object.update();
-    // });
+    particles.forEach(function (particle) {
+        particle.update();
+    });
 }
 
 init();
