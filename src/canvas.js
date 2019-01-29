@@ -62,9 +62,9 @@ function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
 
-    // objects.forEach(object => {
-    //  object.update();
-    // });
+     particles.forEach(particle => {
+      particle.update();
+     });
 }
 
 init()
